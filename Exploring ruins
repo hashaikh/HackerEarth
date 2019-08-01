@@ -1,0 +1,21 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+class ExploringRuins {
+    public static void main(String args[] ) throws Exception {
+      BufferedReader ioSys = new BufferedReader(new InputStreamReader(System.in));
+      String input = ioSys.readLine();
+      String output = "";
+      char[] inputArray = input.toCharArray();
+      for(int i=0;i<inputArray.length;i++){
+          if(inputArray[i] == '?'){
+              inputArray[i] = 'a';
+          }
+      }
+      output = String.valueOf(inputArray);
+      if(output.contains("aa")){
+          output = output.replaceAll("aa", "ab");
+      }
+      System.out.println(output);
+    }
+}
