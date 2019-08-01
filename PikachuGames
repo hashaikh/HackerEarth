@@ -1,0 +1,35 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.lang.Math;
+
+class PikachuGames {
+    public static void main(String args[] ) throws Exception {
+        BufferedReader ioSys = new BufferedReader(new InputStreamReader(System.in));
+        String testCase = ioSys.readLine();
+            char[] fromChars = ioSys.readLine().toCharArray();
+            char[] toChars = ioSys.readLine().toCharArray();
+            int steps = 0;
+            for(int i=0;i<fromChars.length;i++){
+                int fromCharValue = (int)fromChars[i];
+                int toCharValue = (int)toChars[i];
+                int difference = 0;
+                if(fromCharValue > toCharValue){
+                    difference = (90-fromCharValue) + (toCharValue - 65) + 1;
+                }else{
+                    difference = toCharValue - fromCharValue;
+                }
+                steps += PikachuGames.calculateSteps(difference);
+            }
+            System.out.println(steps);
+        }
+    
+    public static int calculateSteps(int difference){
+        int steps = 0;
+       if(difference >= 13){
+            steps += difference-12;
+        }else{
+            steps += difference;
+        }
+        return steps;
+    }
+}
