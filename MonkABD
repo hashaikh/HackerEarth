@@ -1,0 +1,32 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+import java.util.StringTokenizer;
+
+public class MonkABD {
+
+	public static void main(String args[]) throws Exception {
+
+		BufferedReader ioSys = new BufferedReader(new InputStreamReader(System.in));
+		int testCase = Integer.parseInt(ioSys.readLine());
+		 StringTokenizer st=new StringTokenizer(ioSys.readLine());
+		long[] queuesScore = new long[testCase];
+		for(int i=0;i<testCase;i++) {
+			queuesScore[i] = Long.parseLong(st.nextToken());
+		}
+		Arrays.sort(queuesScore);
+		int queries = Integer.parseInt(ioSys.readLine());
+		StringBuffer output = new StringBuffer("");
+		while (queries-- > 0) {
+			String[] query = ioSys.readLine().split(" ");
+			int queryScoreIndex = Integer.parseInt(query[0]);
+			if (query[1].contentEquals("L")) {
+				output.append(queuesScore[queuesScore.length - queryScoreIndex] + "\n");
+			} else {
+				output.append(queuesScore[queryScoreIndex - 1]+ "\n");
+			}
+		}
+		System.out.println(output.toString());
+		ioSys.close();
+	}
+}
